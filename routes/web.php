@@ -17,17 +17,52 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    //return view('welcome');
-});
-
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
+    return Inertia::render('Home', [
+        'name' => 'Kallan Chandra Roy',
+        'framework' => [
+            'Laravel',
+            'Vue',
+            'Inertia JS'
+        ]
     ]);
 });
+
+Route::get('/users', function () {
+    //sleep(2);
+    return Inertia::render('Users', [
+        'time' => now()->toTimeString()
+    ]);
+});
+
+Route::get('/settings', function () {
+    return Inertia::render('Settings');
+});
+
+// Route::post('/loggingout', function () {
+//     dd('logging the user out');
+// });
+
+Route::post('/loggingout', function () {
+    dd(request('foo'));
+});
+
+
+
+
+
+
+
+
+
+
+// Route::get('/', function () {
+//     return Inertia::render('Welcome', [
+//         'canLogin' => Route::has('login'),
+//         'canRegister' => Route::has('register'),
+//         'laravelVersion' => Application::VERSION,
+//         'phpVersion' => PHP_VERSION,
+//     ]);
+// });
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
